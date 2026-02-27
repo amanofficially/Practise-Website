@@ -1,208 +1,337 @@
-/* Google Font Import */
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap");
 
-/* ========== RESET ========== */
+/* =====================================================
+   ================== GLOBAL ===========================
+   ===================================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ========== BODY ========== */
 body {
   font-family: "Josefin Sans", sans-serif;
 }
 
-/* ========== NAVBAR ========== */
-
-/* Main navbar bar */
-.nav_container {
-  height: 90px;
-  display: flex;
-  border-bottom: 1px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+img {
+  max-width: 100%;
+  display: block;
 }
 
-/* Logo area on the left */
-.logo_container {
+/* =====================================================
+   ================== NAVBAR ===========================
+   ===================================================== */
+
+.navbar {
+  height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 30%;
+  padding: 0 80px;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1000;
 }
 
-/* Links area on the right */
-.nav_links {
+.nav-logo img {
+  width: 150px;
+}
+
+.nav-links {
   display: flex;
-  align-items: center;
-  width: 70%;
-  padding-left: 250px;
+  gap: 25px;
 }
 
-/* Remove bullet points from list items */
-.nav_links li {
+.nav-links li {
   list-style: none;
-  margin-left: 20px;
 }
 
-/* Style each link */
-.nav_links a {
+.nav-links a {
   text-decoration: none;
-  color: rgb(60, 60, 60);
-  font-weight: 500;
-  margin-left: 18px;
+  color: #333;
+  font-size: 17px;
+  transition: 0.3s;
 }
 
-/* Hover effect on links */
-.nav_links a:hover {
-  font-weight: 600;
-  border-bottom: 1px solid black;
+.nav-links a:hover {
+  color: black;
+  border-bottom: 2px solid black;
 }
 
-/* ========== HERO SECTION ========== */
-
-/* Outer wrapper - side by side layout */
-.hero_section {
-  display: flex;
-  justify-content: space-around;
-  border-bottom: 1px solid #ccc;
-  padding: 35px 20px;
-}
-
-/* Left - Big banner image */
-.img_banner {
-  background-image: url("images/left-banner-image.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 700px;
-  height: 600px;
-}
-
-/* Text inside the big banner */
-.hero_text {
-  padding-left: 25px;
-  color: white;
-  width: 100%;
-}
-
-.hero_text h1 {
-  font-size: 45px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.hero_text p {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-/* Button on banner */
-.btn {
-  margin-top: 20px;
-  font-weight: 600;
-  border: 1px solid white;
-  color: white;
-  padding: 10px;
-  background: transparent;
+.menu-toggle {
+  display: none;
+  font-size: 28px;
   cursor: pointer;
 }
 
-/* Right side - 2x2 grid of boxes */
-.hero_left {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(2, 1fr); /* 2 rows */
-  gap: 15px;
-  height: 600px;
-  width: 700px;
+/* =====================================================
+   ================== HERO SECTION =====================
+   ===================================================== */
+
+.hero {
+  display: flex;
+  gap: 30px;
+  padding: 80px;
+  border-bottom: 1px solid #eee;
 }
 
-/* Each grid box */
-.box {
-  color: white;
+/* LEFT SIDE */
+
+.hero-left {
+  flex: 1.2;
+  height: 500px;
+  background: url("images/left-banner-image.jpg") center/cover no-repeat;
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  padding: 50px;
+  color: white;
+}
+
+.hero-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  margin-bottom: 25px;
+}
+
+.hero-content button {
+  padding: 12px 25px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-content button:hover {
+  background: white;
+  color: black;
+}
+
+/* RIGHT SIDE */
+
+.hero-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.box {
+  position: relative;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
 }
 
-/* Individual box background images */
-.box1 {
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.box:hover::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.box span {
+  position: relative;
+  z-index: 2;
+}
+
+.women {
   background-image: url("images/baner-right-image-01.jpg");
 }
-.box2 {
+.men {
   background-image: url("images/baner-right-image-02.jpg");
 }
-.box3 {
+.kids {
   background-image: url("images/baner-right-image-03.jpg");
 }
-.box4 {
+.accessories {
   background-image: url("images/baner-right-image-04.jpg");
 }
 
-/* Text inside box1 */
-.box1_txt h1 {
-  margin-bottom: 20px;
+/* =====================================================
+   ================= MEN & WOMEN =======================
+   ===================================================== */
+
+.men-section,
+.women-section {
+  padding: 80px;
 }
 
-/* ========== MEN'S SECTION ========== */
-
-.mens-section {
-  height: 100vh;
-  padding: 40px;
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-/* Section heading block */
-.men-txt {
-  width: 50%;
-  position: relative;
-  top: 150px;
-  left: 150px;
-  text-align: start;
-}
-
-.men-txt h1 {
+.section-title h2 {
+  font-size: 32px;
   margin-bottom: 10px;
 }
 
-/* ========== CARD CONTAINER ========== */
-
-/* Holds all product cards in a row */
-.card_container {
-  display: flex;
-  gap: 20px;
-  margin-top: 200px; /* pushes below the heading */
-  padding: 0 100px;
+.section-title p {
+  color: gray;
 }
 
-/* Single product card */
-.card {
-  flex: 1;
+.men-products,
+.women-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-/* Card image */
-.card img {
+.product-card {
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product-card img {
   width: 100%;
-  height: 300px;
+  height: 350px;
   object-fit: cover;
-  display: block;
-  margin-bottom: 10px;
 }
 
-/* Card title */
-.card h4 {
-  font-size: 15px;
+.product-card h4 {
+  margin-top: 15px;
   font-weight: 600;
-  margin-bottom: 5px;
 }
 
-/* Card price */
-.card p {
-  font-size: 14px;
-  color: #555;
+.product-card p {
+  color: gray;
+  margin-top: 5px;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+/* =====================================================
+   ================== RESPONSIVE =======================
+   ===================================================== */
+
+/* ---------- 992px ---------- */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    padding: 60px 30px;
+  }
+
+  .hero-left {
+    height: 400px;
+  }
+
+  .hero-right {
+    grid-template-columns: 1fr;
+  }
+
+  .men-products,
+  .women-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .men-section,
+  .women-section {
+    padding: 60px 30px;
+  }
+}
+
+/* ---------- 768px ---------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 220px;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .hero-left {
+    height: 350px;
+    padding: 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .box {
+    height: 180px;
+  }
+}
+
+/* ---------- 600px ---------- */
+@media (max-width: 600px) {
+  .men-products,
+  .women-products {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 480px ---------- */
+@media (max-width: 480px) {
+  .section-title h2 {
+    font-size: 24px;
+  }
+
+  .product-card img {
+    height: 280px;
+  }
 }
